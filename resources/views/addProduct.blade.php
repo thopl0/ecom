@@ -7,7 +7,7 @@
             </div>
             <div class="card-body">
                 <form
-                    action="/addProduct"
+                    action="/newproduct"
                     method="POST"
                     enctype="multipart/form-data"
                 >
@@ -80,6 +80,17 @@
                         <div class="invalid-feedback">
                             File Format Not Supported
                         </div>
+                        <img
+                            src=""
+                            alt=""
+                            style="
+                                width: 100%;
+                                height: 200px;
+                                object-fit: cover;
+                                display: none;
+                            "
+                            id="imagepreview"
+                        />
                     </div>
                     <button
                         class="btn btn-dark mt-5 mx-auto d-block"
@@ -92,4 +103,20 @@
         </div>
     </div>
 </section>
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById("imagepreview").src = e.target.result;
+                document.getElementById("imagepreview").style.display = "block";
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    const input = document.getElementById("productimage");
+    input.addEventListener("change", (e) => readURL(e.target));
+</script>
 @endsection

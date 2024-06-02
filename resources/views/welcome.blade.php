@@ -35,8 +35,40 @@
     ></div>
 </header>
 
+<section class="pt-8 pt-md-9">
+    <div class="container">
+      <div class="row mt-6">
+        <div class="col-12 mb-4">
+          <span class="badge bg-pastel-primary text-primary text-uppercase-bold-sm">
+            All categories
+          </span>
+        </div>
+
+        <!-- Category -->
+        @foreach ($categories as $category)
+          <div class="col-md-3 mb-4">
+            <a href="#" class="card align-items-center text-decoration-none border-0 hover-lift-light py-4">
+              <span class="icon-circle icon-circle-lg bg-pastel-primary text-primary">
+                <img src="upload/{{ $category->image }}" alt="" style="width: 32px; height: 32px">
+              </span>
+              <span class="text-dark mt-3">
+                {{ $category->name }}
+              </span>
+            </a>
+          </div>
+        @endforeach
+        
+      </div>
+    </div>
+  </section>
+
 <section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
+    <div class="container mt-5">
+         <div class="col-12 mb-4">
+          <span class="badge bg-pastel-primary text-primary text-uppercase-bold-sm">
+            All Products
+          </span>
+        </div>
         <div
             class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 justify-content-center"
         >
@@ -47,14 +79,17 @@
                         class="card-img-top"
                         src="upload/{{ $product->image }}"
                         alt="{{ $product->name }}"
+                        style="width: 100%; height: 200px; object-fit: cover"
                     />
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="">
+                            <p>{{ $product->category->name }}</p>
                             <!-- Product name-->
                             <h5 class="fw-bolder">{{ $product->name }}</h5>
                             <!-- Product price-->
                             <p>${{ $product->price }}</p>
+                            {{-- {{ $product }} --}}
                         </div>
                     </div>
                     <!-- Product actions-->

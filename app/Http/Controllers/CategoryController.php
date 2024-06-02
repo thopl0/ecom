@@ -15,4 +15,13 @@ class CategoryController extends Controller
         $category->save();
         return redirect()->back()->with('message', 'Category added successfully');
     }
+
+    public function updateCategory(Request $request)
+    {
+        $category = Category::find($request->id);
+        $category->name = $request->category;
+        $category->image = $this->uploadImage('upload/', $request->image);
+        $category->save();
+        return redirect()->back()->with('message', 'Category updated successfully');
+    }
 }

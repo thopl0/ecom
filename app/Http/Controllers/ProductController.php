@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\category;
 
 class ProductController extends Controller
 {
@@ -17,6 +18,9 @@ class ProductController extends Controller
     public function products()
     {
         $products = Product::all();
+        foreach ($products as $product) {
+            $product->category = Category::find($product->category_id);
+        }
         return view('products')->with('products', $products);
     }
     
@@ -31,6 +35,20 @@ class ProductController extends Controller
         $product->category_id = $request->category; 
         $product->save();
         return redirect()->back()->with('message', 'Product added successfully');
+    }
+
+    public function updateProduct(Request $request)
+    {
+        $product = Product::find($request->id);
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        if($request->image) {
+            $product->image = $this->uploadImage('upload/', $request->image);
+        }
+        $product->category_id = $request->category; 
+        $product->save();
+        return redirect()->back()->with('message', 'Product updated successfully');
     }
 
 }

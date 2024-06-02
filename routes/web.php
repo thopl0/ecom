@@ -3,9 +3,11 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EsewaController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Models\Category;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +23,10 @@ use App\Models\Category;
 Route::get('/', [SiteController::class,'index'])->name('index');
 Route::get('/product/{id}', [ProductController::class,'product'])->name('product');
 Route::get('/test', function () {
-    return view('addProduct')->with('categories', Category::all());
+    foreach(Product::all() as $product){
+        $product->category = Category::find($product->category_id);
+        echo $product;
+    }
 });
 
 
@@ -32,9 +37,15 @@ Route::group(["middleware" => "auth"], function () {
 });
 
 Route::group(["middleware" => "isAdmin"], function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::post("/addProduct", [ProductController::class,"addProduct"])->name("addProduct");
-    Route::post(("/addCategory"), [CategoryController::class,"addCategory"])->name("addCategory");
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/addproduct', [SiteController::class,'addProduct'])->name('addProduct');
+    Route::get('/editproduct/{id}', [SiteController::class,'editProduct'])->name('editProduct');
+    Route::post("/newproduct", [ProductController::class,"addProduct"])->name("newProduct");
+    Route::post("/updateproduct", [ProductController::class,"updateProduct"])->name("updateProduct");
+    Route::get("/addcategory", [SiteController::class,"addCategory"])->name("addCategory");
+    Route::get("/editcategory/{id}", [SiteController::class,"editcategory"])->name("editCategory");
+    Route::post(("/newcategory"), [CategoryController::class,"addCategory"])->name("newCategory");
+    Route::post("/updatecategory", [CategoryController::class,"updateCategory"])->name("updateCategory");
 });
 
 
