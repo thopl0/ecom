@@ -4,20 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Wslib\Esewa;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CartController;
 
 class EsewaController extends Controller
 {
-    public function initiateEsewa()
+    public function initiateEsewa(Request $request)
     {
         $esewa = Esewa::init();
-        $esewa->config(time(), "https://google.com", "https://youtube.com", 12);
+        $transactionId = time();
+        $userId = $request->user()->id;
+        $amount = CartController::getTotalCartAmount($userId);
+        OrderController::createOrder($transactionId, $amount);
+        CartController::deleteCart($userId);
+        $esewa->config($transactionId, "http://localhost:8000/order/".$transactionId, "http://localhost:8000/order/".$transactionId, $amount);
     }
 
-    public function validatePayment()
+    static public function validatePayment($transactionId, $amount)
     {
         $esewa = Esewa::init();
-        $status = $esewa->validate('dafsfsfgdrdfbdfhg', 12);
-        dd($status);
+        $status = $esewa->validate($transactionId, $amount);
+        return $status;
     }
     
 }

@@ -38,18 +38,30 @@
                         <button class="btn btn-primary btn-sm" type="button">
                             View Details
                         </button>
-                        <button
-                            class="btn btn-outline-primary btn-sm mt-2"
-                            type="button"
-                        >
-                            Add to wishlist
-                        </button>
-                        <button
-                            class="btn btn-outline-primary btn-sm mt-2"
-                            type="button"
-                        >
-                            Add to Cart
-                        </button>
+                        <form action="/addtocart" method="POST" class="flex-shrink-0 flex-grow-1">
+                            @csrf
+                            <input type="text" hidden value="{{ $product->id }}" name="productId" id="">
+                            <input type="number" hidden value="1" name="quantity" id="">
+                            <button
+                                class="btn btn-outline-primary btn-sm mt-2"
+                                type="submit"
+                                style="width: 100%;"
+                            >
+                                Add to Cart
+                            </button>
+                        </form>
+                        <form action="/addtowishlist" method="POST" class="flex-shrink-0 flex-grow-1">
+                            @csrf
+                            <input type="text" hidden value="{{ $product->id }}" name="productId" id="">
+                            <button
+                                class="btn btn-outline-primary btn-sm"
+                                type="submit"
+                                style="width: 100%;"
+                            >
+                                Add to Wishlist
+                            </button>
+                        </form>
+                    
                     </div>
                 </div>
             </div>

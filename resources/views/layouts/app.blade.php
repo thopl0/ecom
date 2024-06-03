@@ -47,7 +47,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto" style="display: flex; align-items: center; gap: 15px;">
                         <li class="nav-link">
-                            <a href="" class="nav-item" style="background: rgb(13, 110, 253, 0.2); padding: 8px; border-radius: 50%; width: 30px; height: 30px;">
+                            <a href="/wishlist" class="nav-item" style="background: rgb(13, 110, 253, 0.2); padding: 8px; border-radius: 50%; width: 30px; height: 30px;">
                                 <svg
                                 width="20px"
                                 height="20px"
@@ -64,7 +64,7 @@
                         </a>
                     </li>
                     <li class="nav-link" style="position: relative;">
-                        <a href="" class="nav-item" style="background: rgb(13, 110, 253, 0.2); padding: 8px; border-radius: 50%; width: 30px; height: 30px;">
+                        <a href="/cart" class="nav-item" style="background: rgb(13, 110, 253, 0.2); padding: 8px; border-radius: 50%; width: 30px; height: 30px;">
                             <svg
                                 width="20px"
                                 height="20px"
@@ -81,7 +81,7 @@
                                 />
                             </svg>
                         </a>
-                        <span style="position: absolute; top: 0px; right: 0px; background: red; color: white; border-radius: 50%; width: 15px; height: 15px; display: flex; justify-content: center; align-items: center; font-size: 12px">{{App\Models\Cart::count('user_id', Auth::user()->id)}}</span>
+                        <span style="position: absolute; top: 0px; right: 0px; background: red; color: white; border-radius: 50%; width: 15px; height: 15px; display: flex; justify-content: center; align-items: center; font-size: 12px">{{Auth::user() ?  App\Models\Cart::count('user_id', Auth::user()->id) : 0}}</span>
                     </li>
                         <!-- Authentication Links -->
                         @guest

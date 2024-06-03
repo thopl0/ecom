@@ -97,4 +97,5 @@ class SiteController extends Controller
         return view('products')->with('products', $products);
     }
 
+
 }

@@ -19,21 +19,30 @@
                 <p class="lead">
                     {{ $product->description }}
                 </p>
-                <div class="d-flex">
-                    <input
-                        class="form-control  mx-3 px-2"
-                        id="inputQuantity"
-                        type="number"
-                        style="max-width: 3rem"
-                        value="1"
-                    />
-                    <button
-                        class="btn btn-outline-dark flex-shrink-0"
-                        type="button"
-                    >
-                        <i class="bi-cart-fill me-1"></i>
-                        Add to cart
-                    </button>
+                <div style="display: flex">
+                    <form action="/addtocart" method="POST" style="display: flex">
+                        @csrf
+                        <input type="text" hidden value="{{ $product->id }}" name="productId" id="">
+                        <input
+                            class="form-control  mx-3 px-2"
+                            id="inputQuantity"
+                            type="number"
+                            style="max-width: 3rem"
+                            value="1"
+                            name="quantity"
+                        />
+                        <button
+                            class="btn btn-outline-primary flex-shrink-0 mx-3"
+                            type="submit"
+                        >
+                            Add to cart
+                        </button>
+                    </form>
+                    <form action="/addtowishlist" method="POST">
+                        @csrf
+                        <input type="text" hidden value="{{ $product->id }}" name="productId" id="">
+                        <button class="btn btn-outline-primary" type="submit">Add to Wishlist</button>
+                    </form>
                 </div>
             </div>
         </div>

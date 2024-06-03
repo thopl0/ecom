@@ -3,8 +3,10 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EsewaController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Models\Category;
@@ -27,11 +29,23 @@ Route::get('/products', [SiteController::class,'getProducts'])->name('products')
 Route::get('/category/{id}', [SiteController::class,'getCategoryProducts'])->name('category');
 
 
+Route::get('/test', [EsewaController::class,'validatePayment'])->name('validatePayment');
+
+
 
 Auth::routes();
 Route::group(["middleware" => "auth"], function () {
     Route::post('/addtocart', [CartController::class,'addItem'])->name('addToCart');
+    Route::get('/cart', [CartController::class,'getCart'])->name('cart');
+    Route::post('/deletecartitem', [CartController::class,'deleteCartItem'])->name('deleteCartItem');
+    
+    Route::post('/addtowishlist', [WishlistController::class, 'addToWishlist'])->name('addToWishlist');
+    Route::get('/wishlist', [WishlistController::class,'getWishlist'])->name('getWishlist');
+    Route::post('/deletewishlistitem', [WishlistController::class,'deleteWishlistItem'])->name('deleteWishlistItem');
+    
+    Route::get('/order/{transactionId}', [OrderController::class, 'validateOrder'])->name('validateOrder');
     Route::get('/payment', [EsewaController::class,'initiateEsewa'])->name('payment');
+
 });
 
 Route::group(["middleware" => ["auth","isAdmin"]], function () {
