@@ -12,6 +12,7 @@ class CategoryController extends Controller
     {
         $category = new Category;
         $category->name = $request->category;
+        $category->image = $this->uploadImage('upload/', $request->image);
         $category->save();
         return redirect()->back()->with('message', 'Category added successfully');
     }
