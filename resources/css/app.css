@@ -132,3 +132,131 @@ body {
     border: 1px solid #dee2e6;
     border-radius: 0.25rem;
 }
+
+.pic {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.table thead {
+    background-color: #21cf95;
+}
+
+.table thead th {
+    padding-inline: 30px;
+    font-size: 16px;
+}
+
+.table tbody td input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #eee;
+    position: relative;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.container .table-wrap {
+    margin: 20px auto;
+    overflow-x: auto;
+}
+
+.container .table-wrap::-webkit-scrollbar {
+    height: 5px;
+}
+
+.container .table-wrap::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-image: linear-gradient(to right, #5d7ecd, #0c91e6);
+}
+
+/* .table > :not(caption) > * > * {
+    padding: 2rem 0.5rem;
+} */
+
+.input {
+    width: 30px;
+    height: 30px;
+    color: black;
+    font-weight: 600;
+    outline: none;
+    padding: 8px;
+}
+
+::placeholder {
+    color: black;
+    font-weight: 600;
+}
+
+.table tbody tr:nth-child(1) td {
+    padding: 10px 30px 30px 30px;
+}
+
+.table tbody td {
+    padding: 30px;
+    margin: 0;
+    font-size: 14.5px;
+    font-weight: 600;
+}
+
+.table tbody td .fa-times {
+    color: #d32f2f;
+}
+
+.text-muted {
+    font-size: 12.5px;
+}
+
+@media (min-width: 992px) {
+    .container .table-wrap {
+        overflow: hidden;
+    }
+}
+
+.ratings i {
+    font-size: 16px;
+    color: red;
+}
+.strike-text {
+    color: gray;
+    text-decoration: line-through;
+}
+.products-price {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+.description {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 7.5em; /* Adjust this value based on the line height */
+    line-height: 1.5em; /* Adjust this value to match your line height */
+}
+.product-image {
+    width: 100%;
+}
+.dot {
+    height: 7px;
+    width: 7px;
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-top: 3px;
+    background-color: blue;
+    border-radius: 50%;
+    display: inline-block;
+}
+.spec-1 {
+    color: #938787;
+    font-size: 15px;
+}
+h5 {
+    font-weight: 400;
+}
+.para {
+    font-size: 16px;
+}

@@ -34,7 +34,7 @@ class ProductController extends Controller
         $product->image = $this->uploadImage('upload/', $request->image);
         $product->category_id = $request->category; 
         $product->save();
-        return redirect()->back()->with('message', 'Product added successfully');
+        return redirect('admin/products');
     }
 
     public function updateProduct(Request $request)
@@ -48,7 +48,14 @@ class ProductController extends Controller
         }
         $product->category_id = $request->category; 
         $product->save();
-        return redirect()->back()->with('message', 'Product updated successfully');
+        return redirect('/admin/products');
+    }
+
+    public function deleteProduct($id)
+    {
+        $product = Product::find($id);
+        $product->delete();
+        return redirect()->back()->with('message', 'Product deleted successfully');
     }
 
 }

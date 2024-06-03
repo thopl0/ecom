@@ -63,7 +63,7 @@ class DatabaseSeeder extends Seeder
                 'image'=> 'bca54839-470d-4ff3-a20f-1b8b9f5ae212-1717137750.jpg',
                 'description'=> 'G.SKILL TridentZ RGB 16GB (2X8GB) DDR4 3200MHz C16 Gaming Memory Kit - TridentZ RGB 16GB (2X8GB) DDR4 3200MHz C16 Gaming Memory Kit - TridentZ RGB 16GB (2X8GB) DDR4 3200MHz C16 Gaming Memory Kit, RGB 16GB (2X8GB) DDR4 3200MHz C16 Gaming Memory Kit',
                 'price'=> 300,
-                'category_id'=> 2
+                'category_id'=> 3
             ],
             [
                 'name'=>'ASUS ROG Strix B550-A Gaming AMD ATX Motherboard',
@@ -74,7 +74,7 @@ High-performance Gaming Networking: 2.5 Gb LAN with ASUS LANGuard
 Best Gaming Connectivity: Supports HDMI 2.1(4K at 60HZ) and DisplayPort 1.2 output, featuring dual M.2 slots (NVMe SSD)—one with PCIe 4.0 x4 connectivity, USB 3.2 Gen 2 Type-C port and Thunderbolt 3 header
 Industry-leading Gaming Audio and AI Noise Cancelling Mic Technology: High fidelity audio from a SupremeFX S1220A codec with DTS Sound Unbound and Sonic Studio III draws you deeper into the action. Communicate clearly with ASUS AI Noise Cancelling Mic technology.',
                 'price'=> 110,
-                'category_id'=> 3
+                'category_id'=> 4
             ],
             [
                 'name' => 'Samsung 870 EVO SATA III SSD 1TB 2.5” Internal Solid State Drive',
@@ -87,7 +87,7 @@ UPGRADE WITH EASE: Using the 870 EVO SSD is as simple as plugging it into the st
 SAMSUNG MAGICIAN SOFTWARE: Samsung Magician 6 software**** helps you easily manage your drive, keep up the latest updates, monitor the drive's health and status, or even enhance its performance
 WORLD'S #1 FLASH MEMORY BRAND: Experience the performance and reliability from the world's #1 brand for flash memory since 2003;***** All firmware & components, including Samsung's world-renowned DRAM & NAND, are produced in-house. AES 256-bit Encryption (Class 0),TCG/Opal, IEEE1667 (Encrypted drive)",
 "price"=> 80,
-"category_id"=> 4
+"category_id"=> 5
             ]
         ];
 

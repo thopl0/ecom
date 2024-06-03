@@ -47,7 +47,7 @@
         <!-- Category -->
         @foreach ($categories as $category)
           <div class="col-md-3 mb-4">
-            <a href="#" class="card align-items-center text-decoration-none border-0 hover-lift-light py-4">
+            <a href="/category/{{ $category->id }}" class="card align-items-center text-decoration-none border-0 hover-lift-light py-4">
               <span class="icon-circle icon-circle-lg bg-pastel-primary text-primary">
                 <img src="upload/{{ $category->image }}" alt="" style="width: 32px; height: 32px">
               </span>
@@ -97,7 +97,12 @@
                         class="card-footer p-4 pt-0 border-top-0 bg-transparent"
                     >
                         <div class="d-flex justify-content-between align-items-baseline gap-2">
-                            <button class="btn btn-outline-dark flex-shrink-0 flex-grow-1" onclick="addToCart({{ $product->id }}, 1)">Add to cart</button>
+                            <form action="/addtocart" method="POST" class="flex-shrink-0 flex-grow-1">
+                                @csrf
+                                <input type="text" hidden value="{{ $product->id }}" name="productId" id="">
+                                <input type="number" hidden value="1" name="quantity" id="">
+                                <button class="btn btn-outline-dark" style="width: 100%;">Add to cart</button>
+                            </form>
                             <a class="btn btn-outline-dark flex-shrink-0 flex-grow-1" href="/product/{{ $product->id }}">View Details</a>
                         </div>
                     </div>

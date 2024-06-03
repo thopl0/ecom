@@ -49,4 +49,52 @@ class SiteController extends Controller
         }
         return view("editCategory")->with("category", $category);
     }
+
+    public function products()
+    {
+        $products = Product::all();
+        foreach ($products as $product) {
+            $product->category = Category::find($product->category_id);
+        }
+
+        return view('products')->with('products', $products);
+    }
+
+    public function adminProducts()
+    {
+        $products = Product::all();
+        foreach ($products as $product) {
+            $product->category = Category::find($product->category_id);
+        }
+        return view('adminProducts')->with('products', $products);
+    }
+
+    public function categories()
+    {
+        return view('categories')->with('categories', Category::all());
+    }
+
+    public function adminCategories()
+    {
+        return view('adminCategories')->with('categories', Category::all());
+    }
+
+    public function getProducts()
+    {
+        $products = Product::all();
+        foreach ($products as $product) {
+            $product->category = Category::find($product->category_id);
+        }
+        return view('products')->with('products', $products);
+    }
+    
+    public function getCategoryProducts($id)
+    {
+        $products = Product::where('category_id', $id)->get();
+        foreach ($products as $product) {
+            $product->category = Category::find($product->category_id);
+        }
+        return view('products')->with('products', $products);
+    }
+
 }
